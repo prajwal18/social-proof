@@ -1,0 +1,184 @@
+:root{
+    --very-dark-magenta: hsl(300, 43%, 22%);
+    --soft-pink: hsl(333, 80%, 67%);
+    --dark-grayish-magenta: hsl(303, 10%, 53%);
+    --light-grayish-magenta: hsl(300, 24%, 96%);
+    --white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0 auto;
+    min-width: 350px;
+    max-width: 1440px;
+    min-height: 100vh;
+    position: relative;
+    padding: 90px 10px;
+
+    background-image: url('../images/bg-pattern-top-desktop.svg'), url('../images/bg-pattern-bottom-desktop.svg');
+    background-repeat: no-repeat;
+    background-position: top left, bottom right;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Spartan', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+h1 { font-size: 2.4em; font-weight: 700; line-height: 1; color: var(--very-dark-magenta); }
+
+/* Main */
+main{
+    max-width: 1000px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    grid-template-areas: "one two"
+                         "three three";
+    gap: 30px;
+}
+
+main > div { padding: 20px; }
+
+/* Div Info */
+main div.info{
+    grid-area: one;
+}
+
+main div.info p { margin-top: 1em; color: var(--dark-grayish-magenta); }
+
+/* Div Rating */
+main div.rating{
+    grid-area: two;
+    padding: 1em;
+    display: grid;
+    gap: 20px;
+}
+
+main div.rating > article {
+    width: 80%;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--light-grayish-magenta);
+    border-radius: 5px;
+    color: var(--very-dark-magenta);
+    font-weight: 700;
+}
+
+main div.rating > article > p::before {
+    content: url('../images/icon-star.svg') url('../images/icon-star.svg') 
+    url('../images/icon-star.svg') url('../images/icon-star.svg') url('../images/icon-star.svg');
+    margin-right: 20px;
+}
+
+main div.rating article:nth-child(2) {
+    margin-left: 10%;
+}
+main div.rating article:nth-child(3) {
+    margin-left: 20%;
+}
+
+
+/* Div Profile */
+main div.profile {
+    display: grid;
+    grid-area: three;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+main div.profile > article {
+    padding: 30px;
+    background: var(--very-dark-magenta);
+    border-radius: 10px;
+    color: var(--white)
+}
+main div.profile > article > p {
+    margin-top: 1em;
+}
+
+main div.profile > article > div {
+    display: grid;
+    justify-content: left;
+    align-items: center;
+    grid-auto-flow: column;
+    gap: 20px;
+}
+main div.profile > article > div > ul {
+    list-style: none;
+    font-weight: 700;
+}
+main div.profile > article > div > ul li:nth-child(2){ color: var(--soft-pink); font-weight: 400; }
+main div.profile > article > div > img {
+    border-radius: 50%;
+    height: 60px; width: 60px;
+}
+
+/* Footer */
+footer.attribution {
+    padding: 10px;
+    width: 100%;
+    position: absolute;
+    bottom: 0; left: 0;
+    font-size: 11px;
+    text-align: center;
+}
+footer.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+
+
+/* Smaller Screens */
+@media screen and (max-width: 800px) {
+    main div.profile {
+        display: flex;
+        flex-flow: row wrap;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main{
+        padding: 10px;
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+        grid-template-areas: "one"
+                             "two"
+                             "three";
+        gap: 20px;
+    }
+    h1{ font-size: 2em; }
+    h1, main div.info p { text-align: center;}
+
+    main div.rating article:nth-child(1),
+    main div.rating article:nth-child(2),
+    main div.rating article:nth-child(3) {
+        margin-left: 0%;
+        width: 100%;
+        text-align: center;
+    }
+    main div.rating > article > p::before {
+        display: block;
+        margin-bottom: 0.6em; margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    body{
+        background-image: url('../images/bg-pattern-top-mobile.svg'),
+        url('../images/bg-pattern-bottom-mobile.svg');
+    }
+}
